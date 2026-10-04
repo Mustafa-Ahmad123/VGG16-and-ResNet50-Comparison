@@ -1,4 +1,5 @@
 VGG16 vs ResNet50 — CIFAR-10 Image Classification
+
 -> Project Overview
 
 This project presents a comparative study of two popular Convolutional Neural Network (CNN) architectures, VGG16 and ResNet50, for image classification using the CIFAR-10 dataset. The main objective is to understand how these architectures perform when used as pretrained feature extractors with a custom classification head.
