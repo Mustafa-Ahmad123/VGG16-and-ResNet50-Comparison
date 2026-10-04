@@ -1,63 +1,98 @@
-VGG16 vs ResNet50 — CIFAR-10 Image Classification
+ VGG16 vs ResNet50: CIFAR-10 Image Classification
 
--> Project Overview
+## Project Overview
 
-This project presents a comparative study of two popular Convolutional Neural Network (CNN) architectures, VGG16 and ResNet50, for image classification using the CIFAR-10 dataset. The main objective is to understand how these architectures perform when used as pretrained feature extractors with a custom classification head.
+This project presents a comparative study of two widely used Convolutional Neural Network (CNN) architectures, VGG16 and ResNet50, for image classification using the CIFAR-10 dataset. The primary objective is to evaluate the effectiveness of both pretrained architectures when used for feature extraction and classification.
 
-Both models are initialized with ImageNet pretrained weights, while their original classification layers are removed. The extracted features are then passed through a custom classification head containing Global Average Pooling, Batch Normalization, Dropout, and a final Dense layer for CIFAR-10 classification.
+Both models use pretrained ImageNet weights, with their original classification layers removed. The extracted features are passed through a custom classification head consisting of Global Average Pooling, Batch Normalization, Dropout, and a final Dense layer for classifying the ten CIFAR-10 categories.
 
--> Objectives
-Compare VGG16 and ResNet50 on the CIFAR-10 dataset.
-Explore transfer learning and feature extraction using pretrained CNN models.
-Build a custom classification head for CIFAR-10.
-Evaluate and compare model performance using accuracy and loss.
-Understand the differences between VGG16 and ResNet50 architectures and their effectiveness for image classification.
--> Models Used
-VGG16
+## Objectives
 
-VGG16 is a deep CNN architecture that uses a sequence of 3×3 convolutional layers followed by pooling layers. It has a simple and uniform architecture but contains a relatively large number of parameters.
+The main objectives of this project are:
 
-ResNet50
+* To compare the performance of VGG16 and ResNet50 on the CIFAR-10 dataset.
+* To understand the application of transfer learning and feature extraction using pretrained CNN architectures.
+* To develop a custom classification head for CIFAR-10 image classification.
+* To evaluate both models using test accuracy and test loss.
+* To analyze the differences between VGG16 and ResNet50 in terms of architecture and classification performance.
 
-ResNet50 is a 50-layer deep CNN that uses residual connections (skip connections) to make training deeper networks easier and reduce the vanishing-gradient problem. It generally provides strong feature extraction capabilities with a more efficient architecture than traditional deep CNNs.
+## Models Used
 
--> Methodology
+### VGG16
 
-The CIFAR-10 images are preprocessed and resized to a suitable input size for the pretrained models. The convolutional base of each model is kept frozen and used as a feature extractor. A custom classification head is then added:
+VGG16 is a deep convolutional neural network developed by the Visual Geometry Group. It uses multiple 3×3 convolutional layers followed by pooling layers. Its simple and consistent architecture makes it a widely used model for image classification and feature extraction. However, VGG16 contains a relatively large number of parameters.
 
+### ResNet50
+
+ResNet50 is a 50-layer deep convolutional neural network that introduces residual connections, also known as skip connections. These connections allow information and gradients to flow more effectively through deep networks, helping to address the vanishing-gradient problem. ResNet50 provides powerful feature representations while being more parameter-efficient than traditional architectures such as VGG16.
+
+## Methodology
+
+The CIFAR-10 dataset is used for training and evaluating both models. Since the pretrained models were originally trained on ImageNet, the input images are resized and preprocessed according to the requirements of the respective architectures.
+
+The convolutional bases of VGG16 and ResNet50 are initially kept frozen and used as pretrained feature extractors. A custom classification head is then added to classify the extracted features into the ten CIFAR-10 classes.
+
+The overall architecture is:
+
+```text
 Input Image
-     ↓
+     |
+     v
 Pretrained VGG16 / ResNet50
-     ↓
+     |
+     v
 Global Average Pooling
-     ↓
+     |
+     v
 Batch Normalization
-     ↓
+     |
+     v
 Dropout
-     ↓
+     |
+     v
 Dense Layer (10 Classes)
-     ↓
-Prediction
+     |
+     v
+Class Prediction
+```
 
-The same dataset and classification setup are used for both architectures to make the comparison more consistent.
+The same dataset, preprocessing strategy, and classification head are used for both models to provide a fair comparison.
 
--> Evaluation
+## Evaluation
 
-The models are evaluated on the CIFAR-10 test set. Their performance is compared using:
+The performance of VGG16 and ResNet50 is evaluated on the CIFAR-10 test dataset. The comparison is based on:
 
-Test Accuracy
-Test Loss
-Training and Validation Performance
-Overall classification performance
+* Test Accuracy
+* Test Loss
+* Training and Validation Performance
+* Feature Extraction Capability
+* Overall Classification Performance
 
-The experiment helps determine which pretrained architecture provides better feature representations for the CIFAR-10 classification task.
+The results are analyzed to determine which architecture provides better performance for the given classification task.
 
--> Technologies Used
-Python
-TensorFlow / Keras
-NumPy
-Matplotlib
-CIFAR-10 Dataset
-VGG16
-ResNet50
-Transfer Learning
+## Technologies and Tools
+
+* Python
+* TensorFlow
+* Keras
+* NumPy
+* Matplotlib
+* CIFAR-10 Dataset
+* VGG16
+* ResNet50
+* Transfer Learning
+
+## Project Structure
+
+```text
+VGG-vs-ResNet50/
+│
+├── VGG16_CIFAR10.ipynb
+├── ResNet50_CIFAR10.ipynb
+├── README.md
+└── requirements.txt
+```
+
+## Conclusion
+
+This project provides a practical comparison between VGG16 and ResNet50 for CIFAR-10 image classification using transfer learning. By applying the same dataset, preprocessing pipeline, and custom classification head to both pretrained architectures, the project evaluates their relative classification performance and demonstrates the practical differences between traditional CNN architectures and residual networks.
